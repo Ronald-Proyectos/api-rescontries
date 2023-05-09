@@ -1,23 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700;800&display=swap');
-/*
-Su desafío es integrarse con la [API de países REST] (https://restcountries.com) para extraer datos de países y mostrarlos como en los diseños.
-
-Puede usar cualquier marco/biblioteca de JavaScript en el front-end como [React](https://reactjs.org) o [Vue](https://vuejs.org). También tiene control total sobre qué paquetes usa para hacer cosas como hacer solicitudes HTTP o diseñar su proyecto.
-
-Sus usuarios deberían poder:
-
-- Ver todos los países de la API en la página de inicio
-- Busque un país usando un campo de `entrada`
-- Filtrar países por región
-- Haga clic en un país para ver información más detallada en una página separada
-- Haga clic en los países fronterizos en la página de detalles
-- Alternar el esquema de color entre el modo claro y oscuro *(opcional)*
-
-¿Quieres algo de apoyo en el desafío? [Únase a nuestra comunidad de Slack](https://www.frontendmentor.io/slack) y haga preguntas en el canal **#help**.
-
-**⚠️ NOTA ⚠️: A veces, la API de países REST puede fallar. Hemos agregado un archivo `data.json` con todos los datos del país si prefiere usarlo en su lugar. Sin embargo, tenga en cuenta que es posible que los datos del archivo JSON no estén actualizados.**
-*/
-
 *{
     margin: 0;
     padding: 0;

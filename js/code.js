@@ -18,7 +18,7 @@ const datosTarjetas = (datos) => {
         // En un ciclo ForEach se recorren estos datos y con mi variable template voy agregando los datos a su respectiva etiqueta que esta en el html.
         template.querySelector(".bandera").src = `${elemento.flags.png}`
         template.querySelector(".bandera").alt = `${elemento.name.common}`
-        template.querySelector(".bandera").dataset.codeCountry = `${elemento.cca2}`
+        template.querySelector(".bandera").dataset.code = `${elemento.cca2}`
         template.querySelector(".pais").textContent = `${elemento.name.common}`
         template.querySelector(".res-poblacion").textContent = `${elemento.population.toLocaleString()}`
         template.querySelector(".res-region").textContent = `${elemento.region}`
@@ -36,6 +36,7 @@ const datosTarjetas = (datos) => {
 
 const datosPais = (datos) => {
     //Se le pasa a la funcion los datos que se van a leer, en este caso seria el JSON de la respuesta de la API.
+    console.log(datos)
     datos.forEach((elemento) => {  
         // En un ciclo ForEach se recorren estos datos y con mi variable template voy agregando los datos a su respectiva etiqueta que esta en el html.
 
@@ -151,14 +152,14 @@ document.addEventListener("click", async (e) => {
     if(e.target.matches(".filter-all")) obtenerPaises()
     
     if(e.target.matches(".bandera")){
-        btnScrollTop.classList.toggle("hidden")
+        btnScrollTop.classList.add("hidden")
         inputSearch.value = ""
         document.body.classList.toggle("active")
         contenedorInformacionPais.classList.toggle("show")
         try {
             contenedorInformacionPais.innerHTML = `<img class="loader" src="assets/loader.svg" alt="Cargando...">`
 
-            let respuesta = await fetch(`https://restcountries.com/v3.1/alpha/${e.target.dataset.codeCountry}`),
+            let respuesta = await fetch(`https://restcountries.com/v3.1/alpha/${e.target.dataset.code}`),
                 json = await respuesta.json()
 
             if(!respuesta.ok) throw {status: respuesta.status, statusText: respuesta.statusText}
@@ -169,6 +170,7 @@ document.addEventListener("click", async (e) => {
             let mensaje = error.statusText || "Ocurrio un error, por favor intente mas tarde."
             console.error(`Error ${error.status}: ${mensaje}`)
             contenedorInformacionPais.innerHTML = `<b>Error${error.status}: ${mensaje}</b>`
+            setTimeout(() => location.reload() ,1000)
         }
     }
 
